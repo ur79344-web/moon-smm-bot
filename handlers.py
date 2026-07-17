@@ -15,7 +15,7 @@ from database import (
     add_user,
 )
 
-from config import CHANNEL_1, CHANNEL_2
+from config import CHANNEL_1, CHANNEL_2, ADMIN_ID
 
 
 router = Router()
