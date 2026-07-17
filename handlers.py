@@ -133,3 +133,8 @@ async def order(message: Message):
         text += f"{service['service']} - {service['name']}\n"
 
     await message.answer(text)
+    @router.message(lambda message: message.text == "📋 Buyurtmalarim")
+async def my_orders(message: Message):
+    await message.answer(
+        "📋 Hozircha sizda buyurtmalar mavjud emas."
+    )
