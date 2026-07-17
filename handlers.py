@@ -110,13 +110,12 @@ async def balance(message: Message):
     )
 
 
-@router.message(l@router.message(lambda message: message.text == "🛒 Xizmatlar")
+@router.message(lambda message: message.text == "🛒 Xizmatlar")
 async def services(message: Message):
     await message.answer(
         "📱 Platformani tanlang:",
         reply_markup=services_menu
     )
-
 
 @router.message(lambda message: message.text == "📦 Buyurtma")
 async def order(message: Message):
