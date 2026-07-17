@@ -137,4 +137,8 @@ async def order(message: Message):
 async def my_orders(message: Message):
     await message.answer(
         "📋 Hozircha sizda buyurtmalar mavjud emas."
+    @router.message(lambda message: message.text == "📞 Admin")
+async def admin(message: Message):
+    await message.answer(
+        "👨‍💻 Admin: @khosimov_abu"
     )
