@@ -64,11 +64,15 @@ await message.answer(
         message.from_user.username
     )
 
-    await message.answer(
-    "Assalomu alaykum! 👋\n\n"
-    "Botdan foydalanishingiz mumkin.\n\n"
-    "Kerakli bo‘limni tanlang:",
-    reply_markup=main_menu
+await call.message.edit_text(
+    "✅ <b>Obuna muvaffaqiyatli tasdiqlandi!</b>",
+    parse_mode="HTML"
+)
+
+await call.message.answer(
+    "🖥️ <b>Asosiy menyudasiz.</b>",
+    reply_markup=main_menu,
+    parse_mode="HTML"
 )
 
 
