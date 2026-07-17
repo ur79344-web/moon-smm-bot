@@ -368,16 +368,17 @@ async def payment_photo_handler(
 
     from database import add_payment
 
-    await message.bot.send_photo(
-        8638810880,
-        message.photo[-1].file_id,
-        caption=(
-            "💳 Yangi to'lov!\n\n"
-            f"👤 Foydalanuvchi ID: {message.from_user.id}\n"
-            f"💰 Summa: {amount} so'm\n\n"
-            "Tasdiqlash kerak."
-        )
-    )
+await message.bot.send_photo(
+    8638810880,
+    message.photo[-1].file_id,
+    caption=(
+        "💳 Yangi to'lov!\n\n"
+        f"👤 Foydalanuvchi ID: {message.from_user.id}\n"
+        f"💰 Summa: {amount} so'm\n\n"
+        "Tasdiqlash kerak."
+    ),
+    reply_markup=payment_admin_keyboard
+)
 
 
     await message.answer(
