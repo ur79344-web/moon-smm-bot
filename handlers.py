@@ -381,6 +381,7 @@ await message.bot.send_photo(
         f"💰 Summa: {amount} so'm\n\n"
         "Tasdiqlash kerak."
     )
+)
 
 
     await message.answer(
