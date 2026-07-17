@@ -1,10 +1,10 @@
 import aiohttp
-from config import API_URL, API_KEY
+
+API_URL = "https://nitrosms.uz/api/v2"
+API_KEY = "143d4d1c23378d10ac70e7c458cc5346"
+
 
 async def get_services():
-    if not API_URL or not API_KEY:
-        return []
-
     data = {
         "key": API_KEY,
         "action": "services"
@@ -12,36 +12,6 @@ async def get_services():
 
     async with aiohttp.ClientSession() as session:
         async with session.post(API_URL, data=data) as response:
-            return await response.json()
+            result = await response.json()
 
-
-async def create_order(service, link, quantity):
-    if not API_URL or not API_KEY:
-        return {"error": "API sozlanmagan"}
-
-    data = {
-        "key": API_KEY,
-        "action": "add",
-        "service": service,
-        "link": link,
-        "quantity": quantity
-    }
-
-    async with aiohttp.ClientSession() as session:
-        async with session.post(API_URL, data=data) as response:
-            return await response.json()
-
-
-async def order_status(order_id):
-    if not API_URL or not API_KEY:
-        return {"error": "API sozlanmagan"}
-
-    data = {
-        "key": API_KEY,
-        "action": "status",
-        "order": order_id
-    }
-
-    async with aiohttp.ClientSession() as session:
-        async with session.post(API_URL, data=data) as response:
-            return await response.json()
+    return result
