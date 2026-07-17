@@ -20,3 +20,15 @@ async def add_user(user_id, username):
             (user_id, username)
         )
         await db.commit()
+async def get_balance(user_id):
+    async with aiosqlite.connect(DB_NAME) as db:
+        cursor = await db.execute(
+            "SELECT balance FROM users WHERE id=?",
+            (user_id,)
+        )
+        row = await cursor.fetchone()
+
+        if row:
+            return row[0]
+
+        return 0
