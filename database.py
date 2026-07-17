@@ -278,3 +278,36 @@ async def delete_user(user_id):
         await db.commit()
         
         
+async def clear_orders(user_id):
+    async with aiosqlite.connect(DB_NAME) as db:
+
+        await db.execute(
+            "DELETE FROM orders WHERE user_id=?",
+            (user_id,)
+        )
+
+        await db.commit()
+
+
+async def clear_payments(user_id):
+    async with aiosqlite.connect(DB_NAME) as db:
+
+        await db.execute(
+            "DELETE FROM payments WHERE user_id=?",
+            (user_id,)
+        )
+
+        await db.commit()
+
+
+async def user_exists(user_id):
+    async with aiosqlite.connect(DB_NAME) as db:
+
+        cursor = await db.execute(
+            "SELECT id FROM users WHERE id=?",
+            (user_id,)
+        )
+
+        result = await cursor.fetchone()
+
+        return result is not None
