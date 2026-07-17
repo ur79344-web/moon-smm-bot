@@ -86,7 +86,7 @@ async def check(call: CallbackQuery):
         )
 
         await call.message.answer(
-            "🌙 MOON SMM",
+            "Assalomu Aleykum botga xush kelibsiz ", 
             reply_markup=main_menu
         )
 
@@ -113,7 +113,7 @@ async def balance(message: Message):
 @router.message(lambda message: message.text == "🛒 Xizmatlar")
 async def services(message: Message):
     await message.answer(
-        "📱 Platformani tanlang:",
+        "📱 Qaysi Ilovaga buyurtma bermoqchisiz :",
         reply_markup=services_menu
     )
 
@@ -149,7 +149,7 @@ async def my_orders(message: Message):
 async def admin(message: Message):
 
     await message.answer(
-        "👨‍💻 Admin: @KHOSIMOV_ABU"
+        "👨‍💻 Admin: @khosimov_abu"
     )
 
 
@@ -158,5 +158,5 @@ async def deposit(message: Message):
 
     await message.answer(
         "💳 Hisobni to'ldirish uchun admin bilan bog'laning.\n\n"
-        "👨‍💻 @KHOSIMOV_ABU"
+        "👨‍💻 @khosimov_abu"
     )
