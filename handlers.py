@@ -164,9 +164,14 @@ async def deposit(message: Message):
 @router.message(lambda message: message.text == "📢 Telegram")
 async def telegram_services(message: Message):
     await message.answer(
-        "📢 Telegram xizmatlari:\n\n"
-        "1️⃣ Obunachi\n"
-        "2️⃣ Ko‘rish\n"
-        "3️⃣ Reaksiya\n\n"
-        "Kerakli xizmatni tanlang."
+        "📢 <b>Telegram xizmatlari</b>\n\n"
+        "🔥 <b>Eng mashhur xizmatlar:</b>\n\n"
+        "👥 <b>Obunachilar</b>\n"
+        "└ Sifatli va tez yetkazib berish ⚡️\n\n"
+        "👁 <b>Ko‘rishlar</b>\n"
+        "└ Post va kanallar uchun 📈\n\n"
+        "❤️ <b>Reaksiyalar</b>\n"
+        "└ Turli xil reaksiyalar 🔥\n\n"
+        "👇 Kerakli xizmat turini tanlang:",
+        parse_mode="HTML"
     )
