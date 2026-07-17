@@ -1,6 +1,9 @@
 import aiosqlite
+import os
 
-DB_NAME = "users.db"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_NAME = os.path.join(BASE_DIR, "users.db")
+
 
 async def create_db():
     async with aiosqlite.connect(DB_NAME) as db:
@@ -13,6 +16,7 @@ async def create_db():
         """)
         await db.commit()
 
+
 async def add_user(user_id, username):
     async with aiosqlite.connect(DB_NAME) as db:
         await db.execute(
@@ -20,6 +24,8 @@ async def add_user(user_id, username):
             (user_id, username)
         )
         await db.commit()
+
+
 async def get_balance(user_id):
     async with aiosqlite.connect(DB_NAME) as db:
         cursor = await db.execute(
@@ -32,6 +38,8 @@ async def get_balance(user_id):
             return row[0]
 
         return 0
+
+
 async def update_balance(user_id, amount):
     async with aiosqlite.connect(DB_NAME) as db:
         await db.execute(
