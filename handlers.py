@@ -21,7 +21,7 @@ def check_button():
             ],
             [
                 InlineKeyboardButton(
-                    text="Diamond Mafia UZ",
+                    text="Shaxsiy Kanal",
                     url=f"https://t.me/{CHANNEL_2.replace('@','')}"
                 )
             ],
