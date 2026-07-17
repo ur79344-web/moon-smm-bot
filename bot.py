@@ -1,0 +1,22 @@
+import asyncio
+from aiogram import Bot, Dispatcher
+from aiogram.filters import CommandStart
+from aiogram.types import Message
+
+TOKEN = "8858080639:AAGUlxbFZ-2AjbFnY8jNW6bKw_dXJZoNri4"
+
+bot = Bot(token=TOKEN)
+dp = Dispatcher()
+
+@dp.message(CommandStart())
+async def start(message: Message):
+    await message.answer(
+        "🌙 MOON SMM\n\n"
+        "Bot ishga tushdi! ✅"
+    )
+
+async def main():
+    await dp.start_polling(bot)
+
+if __name__ == "__main__":
+    asyncio.run(main())
