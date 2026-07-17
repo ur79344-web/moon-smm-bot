@@ -481,14 +481,21 @@ async def approve_payment(call: CallbackQuery):
         )
         return
 
+amount = payment[2]
 
-    amount = payment[2]
-    print("BALANS QO'SHILMOQDA:", user_id, amount)
+print("BALANS QO'SHILMOQDA:", user_id, amount)
 
-    await add_balance(
-        int(user_id),
-        amount
-    )
+from database import add_user
+
+await add_user(
+    int(user_id),
+    None
+)
+
+await add_balance(
+    int(user_id),
+    amount
+)
 
 
     await call.message.bot.send_message(
