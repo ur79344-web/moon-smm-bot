@@ -52,15 +52,11 @@ async def subscribed(message):
     return True
 
 
-@router.message(CommandStart())
-async def start(message: Message):
-    await create_db()
-
-    if not await subscribed(message):
-        await message.answer(
-            "Botdan foydalanish uchun quyidagi kanalga a'zo bo'ling:",
-            reply_markup=check_button()
-        )
+await message.answer(
+    "<b>⛔ Botdan foydalanish uchun, quyidagi kanallarga obuna bo'ling:</b>",
+    reply_markup=check_button(),
+    parse_mode="HTML"
+)
         return
 
     await add_user(
