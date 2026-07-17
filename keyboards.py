@@ -10,3 +10,14 @@ main_menu = ReplyKeyboardMarkup(
     ],
     resize_keyboard=True
 )
+
+services_menu = ReplyKeyboardMarkup(
+    keyboard=[
+        [KeyboardButton(text="📢 Telegram")],
+        [KeyboardButton(text="📸 Instagram")],
+        [KeyboardButton(text="🎵 TikTok")],
+        [KeyboardButton(text="▶️ YouTube")],
+        [KeyboardButton(text="⬅️ Orqaga")]
+    ],
+    resize_keyboard=True
+)
