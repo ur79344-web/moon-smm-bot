@@ -452,3 +452,16 @@ async def payment_back(call: CallbackQuery):
     )
 
     await call.answer()
+    
+    
+@router.callback_query(lambda c: c.data == "approve_payment")
+async def approve_payment(call: CallbackQuery):
+
+    await call.answer(
+        "✅ Tugma ishladi",
+        show_alert=True
+    )
+
+    await call.message.answer(
+        "Tasdiqlash bosildi"
+    )
