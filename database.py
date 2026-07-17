@@ -42,8 +42,8 @@ async def create_db():
 
         await db.commit()
         
-        
-        async def add_user(user_id, username, invited_by=0):
+    
+async def add_user(user_id, username, invited_by=0):
     async with aiosqlite.connect(DB_NAME) as db:
 
         await db.execute(
@@ -90,7 +90,7 @@ async def get_balance(user_id):
         return 0
         
         
-        async def set_balance(user_id, amount):
+async def set_balance(user_id, amount):
     async with aiosqlite.connect(DB_NAME) as db:
 
         await db.execute(
@@ -138,7 +138,7 @@ async def add_referral(user_id):
         await db.commit()
         
         
-        async def add_order(user_id, service, status="⏳ Buyurtma bajarilmoqda"):
+async def add_order(user_id, service, status="⏳ Buyurtma bajarilmoqda"):
     async with aiosqlite.connect(DB_NAME) as db:
 
         await db.execute(
@@ -185,7 +185,7 @@ async def update_order_status(order_id, status):
         await db.commit()
         
         
-        async def add_payment(user_id, amount, photo, status="Kutilmoqda"):
+async def add_payment(user_id, amount, photo, status="Kutilmoqda"):
     async with aiosqlite.connect(DB_NAME) as db:
 
         await db.execute(
@@ -238,7 +238,7 @@ async def update_payment_status(payment_id, status):
         await db.commit()
         
         
-        async def payment_exists(user_id):
+async def payment_exists(user_id):
     async with aiosqlite.connect(DB_NAME) as db:
 
         cursor = await db.execute(
@@ -278,36 +278,3 @@ async def delete_user(user_id):
         await db.commit()
         
         
-async def clear_orders(user_id):
-    async with aiosqlite.connect(DB_NAME) as db:
-
-        await db.execute(
-            "DELETE FROM orders WHERE user_id=?",
-            (user_id,)
-        )
-
-        await db.commit()
-
-
-async def clear_payments(user_id):
-    async with aiosqlite.connect(DB_NAME) as db:
-
-        await db.execute(
-            "DELETE FROM payments WHERE user_id=?",
-            (user_id,)
-        )
-
-        await db.commit()
-
-
-async def user_exists(user_id):
-    async with aiosqlite.connect(DB_NAME) as db:
-
-        cursor = await db.execute(
-            "SELECT id FROM users WHERE id=?",
-            (user_id,)
-        )
-
-        result = await cursor.fetchone()
-
-        return result is not None
