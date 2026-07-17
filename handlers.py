@@ -483,6 +483,7 @@ async def approve_payment(call: CallbackQuery):
 
 
     amount = payment[2]
+    print("BALANS QO'SHILMOQDA:", user_id, amount)
 
     await add_balance(
         int(user_id),
