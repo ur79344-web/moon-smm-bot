@@ -110,27 +110,12 @@ async def balance(message: Message):
     )
 
 
-@router.message(lambda message: message.text == "🛒 Xizmatlar")
+@router.message(l@router.message(lambda message: message.text == "🛒 Xizmatlar")
 async def services(message: Message):
-
-    services = await get_services()
-
-    if not services:
-        await message.answer(
-            "⚠️ Hozircha xizmatlar mavjud emas yoki API ulanmagan."
-        )
-        return
-
-    text = "🛒 Xizmatlar:\n\n"
-
-    for service in services[:20]:
-        text += (
-            f"🆔 {service['service']}\n"
-            f"📌 {service['name']}\n"
-            f"💵 {service['rate']}$\n\n"
-        )
-
-    await message.answer(text)
+    await message.answer(
+        "📱 Platformani tanlang:",
+        reply_markup=services_menu
+    )
 
 
 @router.message(lambda message: message.text == "📦 Buyurtma")
