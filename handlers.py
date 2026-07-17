@@ -381,7 +381,7 @@ await message.bot.send_photo(
 )
 
 
-    await message.answer(
+await message.answer(
         "⏰ Sizning to'lovingiz administratorlarga yuborildi.\n\n"
         "💸 To'lov tasdiqlanishi bilan hisobingizga pul tushadi.\n\n"
         "⚠️ To'lovlar 30 daqiqadan 48 soatgacha "
