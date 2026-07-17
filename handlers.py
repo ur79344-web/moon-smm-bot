@@ -116,3 +116,20 @@ async def services(message: Message):
         )
 
     await message.answer(text)
+ @router.message(lambda message: message.text == "📦 Buyurtma")
+async def order(message: Message):
+    services = await get_services()
+
+    if not services:
+        await message.answer(
+            "⚠️ API ulanmagan yoki xizmatlar topilmadi."
+        )
+        return
+
+    text = "📦 Buyurtma berish\n\n"
+    text += "Quyidagi xizmat ID raqamini yuboring:\n\n"
+
+    for service in services[:15]:
+        text += f"{service['service']} - {service['name']}\n"
+
+    await message.answer(text)
