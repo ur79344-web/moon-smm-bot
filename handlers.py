@@ -3,7 +3,7 @@ from aiogram.filters import CommandStart
 from aiogram.types import Message, CallbackQuery
 from api import get_services
 from database import add_user, create_db, get_balance
-from keyboards import main_menu
+from keyboards import main_menu, services_menu
 from config import CHANNEL_1, CHANNEL_2
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
