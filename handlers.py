@@ -386,7 +386,7 @@ async def payment_photo_handler(
         "⚠️ To'lovlar 30 daqiqadan 48 soatgacha "
         "bo'lgan muddat ichida ko'rib chiqiladi.",
         reply_markup=main_menu
-    )
+    ) 
 
 
     await state.clear()
