@@ -87,5 +87,6 @@ async def check(call: CallbackQuery):
     else:
         await call.answer(
             "Hali obuna bo'lmagansiz!",
-            show_alert=True
-        )
+            show_alert=True )
+from database import get_balance
+        
