@@ -15,13 +15,13 @@ def check_button():
         inline_keyboard=[
             [
                 InlineKeyboardButton(
-                    text="📢 Kanal 1",
+                    text="Moon - SMM | News",
                     url=f"https://t.me/{CHANNEL_1.replace('@','')}"
                 )
             ],
             [
                 InlineKeyboardButton(
-                    text="📢 Kanal 2",
+                    text="Diamond Mafia UZ",
                     url=f"https://t.me/{CHANNEL_2.replace('@','')}"
                 )
             ],
