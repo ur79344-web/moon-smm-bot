@@ -7,4 +7,4 @@ API_KEY = ""
 
 ADMIN_ID = 0
 CHANNEL_1 = "@moon_smm_news"
-CHANNEL_2 = "@mmaqolauz"
+CHANNEL_2 = "@mmaqola_uz"
