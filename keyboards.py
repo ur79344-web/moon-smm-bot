@@ -184,3 +184,24 @@ referal_keyboard = InlineKeyboardMarkup(
         ],
     ]
 )
+
+
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+
+
+payment_admin_keyboard = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(
+                text="✅ Tasdiqlash",
+                callback_data="approve_payment"
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                text="❌ Rad etish",
+                callback_data="reject_payment"
+            )
+        ]
+    ]
+)
