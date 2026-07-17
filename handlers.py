@@ -69,9 +69,11 @@ async def start(message: Message):
     )
 
     await message.answer(
-        "🌙 MOON SMM\n\nXush kelibsiz!",
-        reply_markup=main_menu
-    )
+    "Assalomu alaykum! 👋\n\n"
+    "Botdan foydalanishingiz mumkin.\n\n"
+    "Kerakli bo‘limni tanlang:",
+    reply_markup=main_menu
+)
 
 
 @router.callback_query(lambda c: c.data == "check_sub")
