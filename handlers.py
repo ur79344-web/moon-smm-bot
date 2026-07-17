@@ -1,12 +1,10 @@
 from aiogram import Router
 from aiogram.filters import CommandStart
 from aiogram.types import Message, CallbackQuery
-from aiogram.exceptions import TelegramBadRequest
 from api import get_services
+from database import add_user, create_db, get_balance
 from keyboards import main_menu
-from database import add_user, create_db
 from config import CHANNEL_1, CHANNEL_2
-
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 router = Router()
@@ -44,8 +42,10 @@ async def subscribed(message):
                 channel,
                 message.from_user.id
             )
+
             if member.status in ["left", "kicked"]:
                 return False
+
         except:
             return False
 
@@ -76,28 +76,41 @@ async def start(message: Message):
 
 @router.callback_query(lambda c: c.data == "check_sub")
 async def check(call: CallbackQuery):
+
     if await subscribed(call.message):
+
         await call.message.edit_text(
             "✅ Obuna tasdiqlandi.\nBotdan foydalanishingiz mumkin."
         )
+
         await call.message.answer(
             "🌙 MOON SMM",
             reply_markup=main_menu
         )
+
     else:
+
         await call.answer(
             "Hali obuna bo'lmagansiz!",
-            show_alert=True )
-from database import get_balance
+            show_alert=True
+        )
+
+
 @router.message(lambda message: message.text == "💰 Balans")
 async def balance(message: Message):
-    balance = await get_balance(message.from_user.id)
+
+    balance = await get_balance(
+        message.from_user.id
+    )
 
     await message.answer(
         f"💰 Sizning balansingiz:\n\n{balance} so'm"
     )
+
+
 @router.message(lambda message: message.text == "🛒 Xizmatlar")
 async def services(message: Message):
+
     services = await get_services()
 
     if not services:
@@ -116,8 +129,11 @@ async def services(message: Message):
         )
 
     await message.answer(text)
- @router.message(lambda message: message.text == "📦 Buyurtma")
+
+
+@router.message(lambda message: message.text == "📦 Buyurtma")
 async def order(message: Message):
+
     services = await get_services()
 
     if not services:
@@ -137,6 +153,7 @@ async def order(message: Message):
 
 @router.message(lambda message: message.text == "📋 Buyurtmalarim")
 async def my_orders(message: Message):
+
     await message.answer(
         "📋 Hozircha sizda buyurtmalar mavjud emas."
     )
@@ -144,6 +161,7 @@ async def my_orders(message: Message):
 
 @router.message(lambda message: message.text == "📞 Admin")
 async def admin(message: Message):
+
     await message.answer(
         "👨‍💻 Admin: @KHOSIMOV_ABU"
     )
@@ -151,6 +169,7 @@ async def admin(message: Message):
 
 @router.message(lambda message: message.text == "➕ Hisobni to'ldirish")
 async def deposit(message: Message):
+
     await message.answer(
         "💳 Hisobni to'ldirish uchun admin bilan bog'laning.\n\n"
         "👨‍💻 @KHOSIMOV_ABU"
