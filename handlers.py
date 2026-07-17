@@ -96,4 +96,23 @@ async def balance(message: Message):
     await message.answer(
         f"💰 Sizning balansingiz:\n\n{balance} so'm"
     )
-        
+@router.message(lambda message: message.text == "🛒 Xizmatlar")
+async def services(message: Message):
+    services = await get_services()
+
+    if not services:
+        await message.answer(
+            "⚠️ Hozircha xizmatlar mavjud emas yoki API ulanmagan."
+        )
+        return
+
+    text = "🛒 Xizmatlar:\n\n"
+
+    for service in services[:20]:
+        text += (
+            f"🆔 {service['service']}\n"
+            f"📌 {service['name']}\n"
+            f"💵 {service['rate']}$\n\n"
+        )
+
+    await message.answer(text)
