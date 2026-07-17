@@ -2,7 +2,7 @@ from aiogram import Router
 from aiogram.filters import CommandStart
 from aiogram.types import Message, CallbackQuery
 from aiogram.exceptions import TelegramBadRequest
-
+from api import get_services
 from keyboards import main_menu
 from database import add_user, create_db
 from config import CHANNEL_1, CHANNEL_2
