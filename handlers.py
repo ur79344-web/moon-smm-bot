@@ -161,7 +161,7 @@ async def deposit(message: Message):
         "👨‍💻 @khosimov_abu"
     )
     
-    @router.message(lambda message: message.text == "📢 Telegram")
+@router.message(lambda message: message.text == "📢 Telegram")
 async def telegram_services(message: Message):
     await message.answer(
         "📢 Telegram xizmatlari:\n\n"
