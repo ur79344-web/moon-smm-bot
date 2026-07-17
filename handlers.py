@@ -160,3 +160,13 @@ async def deposit(message: Message):
         "💳 Hisobni to'ldirish uchun admin bilan bog'laning.\n\n"
         "👨‍💻 @khosimov_abu"
     )
+    
+    @router.message(lambda message: message.text == "📢 Telegram")
+async def telegram_services(message: Message):
+    await message.answer(
+        "📢 Telegram xizmatlari:\n\n"
+        "1️⃣ Obunachi\n"
+        "2️⃣ Ko‘rish\n"
+        "3️⃣ Reaksiya\n\n"
+        "Kerakli xizmatni tanlang."
+    )
