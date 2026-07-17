@@ -89,4 +89,11 @@ async def check(call: CallbackQuery):
             "Hali obuna bo'lmagansiz!",
             show_alert=True )
 from database import get_balance
+@router.message(lambda message: message.text == "💰 Balans")
+async def balance(message: Message):
+    balance = await get_balance(message.from_user.id)
+
+    await message.answer(
+        f"💰 Sizning balansingiz:\n\n{balance} so'm"
+    )
         
