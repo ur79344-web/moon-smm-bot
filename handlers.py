@@ -133,12 +133,25 @@ async def order(message: Message):
         text += f"{service['service']} - {service['name']}\n"
 
     await message.answer(text)
-    @router.message(lambda message: message.text == "📋 Buyurtmalarim")
+
+
+@router.message(lambda message: message.text == "📋 Buyurtmalarim")
 async def my_orders(message: Message):
     await message.answer(
         "📋 Hozircha sizda buyurtmalar mavjud emas."
-    @router.message(lambda message: message.text == "📞 Admin")
+    )
+
+
+@router.message(lambda message: message.text == "📞 Admin")
 async def admin(message: Message):
     await message.answer(
-        "👨‍💻 Admin: @khosimov_abu"
+        "👨‍💻 Admin: @KHOSIMOV_ABU"
+    )
+
+
+@router.message(lambda message: message.text == "➕ Hisobni to'ldirish")
+async def deposit(message: Message):
+    await message.answer(
+        "💳 Hisobni to'ldirish uchun admin bilan bog'laning.\n\n"
+        "👨‍💻 @KHOSIMOV_ABU"
     )
