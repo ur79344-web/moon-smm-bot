@@ -3,7 +3,7 @@ from aiogram import Bot, Dispatcher
 from aiogram.filters import CommandStart
 from aiogram.types import Message
 
-TOKEN = "8858080639:AAGUlxbFZ-2AjbFnY8jNW6bKw_dXJZoNri4"
+TOKEN = "MENING TOKENIM"
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
