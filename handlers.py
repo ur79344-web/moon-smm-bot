@@ -58,7 +58,7 @@ async def start(message: Message):
 
     if not await subscribed(message):
         await message.answer(
-            "Botdan foydalanish uchun 2 ta kanalga a'zo bo'ling:",
+            "Botdan foydalanish uchun quyidagi kanalga a'zo bo'ling:",
             reply_markup=check_button()
         )
         return
