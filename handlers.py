@@ -6,7 +6,8 @@ from aiogram.types import Message, CallbackQuery
 
 from keyboards import (
     main_menu,
-    subscribe_keyboard
+    subscribe_keyboard,
+    payment_admin_keyboard
 )
 
 from database import (
