@@ -113,7 +113,7 @@ async def balance(message: Message):
 @router.message(lambda message: message.text == "🛒 Xizmatlar")
 async def services(message: Message):
     await message.answer(
-        "📱 Qaysi Ilovaga buyurtma bermoqchisiz :",
+        "📱 O'zingizga kerakli bo'limni tanlang  :",
         reply_markup=services_menu
     )
 
