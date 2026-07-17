@@ -388,7 +388,7 @@ await message.bot.send_photo(
     )
     
 
-    await message.bot.send_photo(
+await message.bot.send_photo(
         8638810880,
         message.photo[-1].file_id,
         caption=(
