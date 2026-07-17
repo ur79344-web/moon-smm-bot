@@ -362,11 +362,14 @@ async def payment_photo_handler(
 
         return
 
+
     data = await state.get_data()
 
     amount = data["amount"]
 
+
     from database import add_payment
+
 
     await add_payment(
         message.from_user.id,
@@ -375,20 +378,7 @@ async def payment_photo_handler(
     )
 
 
-await message.bot.send_photo(
-        8638810880,
-        message.photo[-1].file_id,
-        caption=(
-            "💳 Yangi to'lov!\n\n"
-            f"👤 Foydalanuvchi ID: {message.from_user.id}\n"
-            f"💰 Summa: {amount} so'm\n\n"
-            "Tasdiqlash kerak."
-        ),
-        reply_markup=payment_admin_keyboard
-    )
-    
-
-await message.bot.send_photo(
+    await message.bot.send_photo(
         8638810880,
         message.photo[-1].file_id,
         caption=(
@@ -411,6 +401,7 @@ await message.bot.send_photo(
 
 
     await state.clear()
+
     
     
 @router.message(lambda message: message.text == "📔 Qo'llanma")
