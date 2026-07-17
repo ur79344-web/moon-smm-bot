@@ -93,15 +93,15 @@ async def get_balance(user_id):
 async def set_balance(user_id, amount):
     async with aiosqlite.connect(DB_NAME) as db:
 
-        result = await db.execute(
+        cursor = await db.execute(
             "UPDATE users SET balance=? WHERE id=?",
             (amount, user_id)
         )
 
         await db.commit()
 
-        print("BALANS YOZILDI:", user_id, amount)
-        print("O'ZGARGAN QATOR:", result.rowcount)
+        print("SET BALANCE:", user_id, amount)
+        print("ROW:", cursor.rowcount)
 
 
 async def add_balance(user_id, amount):
