@@ -1,8 +1,7 @@
 import aiosqlite
 import os
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_NAME = os.path.join(BASE_DIR, "users.db")
+DB_NAME = os.path.join("/tmp", "users.db")
 
 
 async def create_db():
@@ -32,6 +31,7 @@ async def get_balance(user_id):
             "SELECT balance FROM users WHERE id=?",
             (user_id,)
         )
+
         row = await cursor.fetchone()
 
         if row:
