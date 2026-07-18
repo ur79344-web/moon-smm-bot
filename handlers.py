@@ -466,7 +466,7 @@ async def payment_back(call: CallbackQuery):
 @router.callback_query(lambda c: c.data == "approve_payment")
 async def approve_payment(call: CallbackQuery):
 
-    from database import add_balance, get_last_payment
+    from database import add_balance, get_last_payment, add_user
 
     user_id = call.message.caption.split("ID: ")[1].split("\n")[0]
 
@@ -481,29 +481,25 @@ async def approve_payment(call: CallbackQuery):
         )
         return
 
-amount = payment[2]
+    amount = payment[2]
 
-print("BALANS QO'SHILMOQDA:", user_id, amount)
+    print("BALANS QO'SHILMOQDA:", user_id, amount)
 
-from database import add_user
+    await add_user(
+        int(user_id),
+        None
+    )
 
-await add_user(
-    int(user_id),
-    None
-)
-
-await add_balance(
-    int(user_id),
-    amount
-)
-
+    await add_balance(
+        int(user_id),
+        amount
+    )
 
     await call.message.bot.send_message(
         int(user_id),
         f"✅ To'lov tasdiqlandi!\n\n"
         f"💰 Hisobingizga {amount} so'm qo'shildi."
     )
-
 
     await call.answer(
         "✅ Tasdiqlandi",
