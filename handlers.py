@@ -162,6 +162,30 @@ async def network_services(call: CallbackQuery):
 
     await call.answer()
     
+
+@router.callback_query(lambda c: c.data == "instagram")
+async def instagram_services(call: CallbackQuery):
+
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="👥 Obunachi", callback_data="ig_sub")],
+            [InlineKeyboardButton(text="🎥 Video ko'rish", callback_data="ig_views")],
+            [InlineKeyboardButton(text="❤️ Like (Yoqtirish)", callback_data="ig_like")],
+            [InlineKeyboardButton(text="💬 Comment", callback_data="ig_comment")],
+            [InlineKeyboardButton(text="⭕️ Jonli efir ko'rish", callback_data="ig_live")],
+            [InlineKeyboardButton(text="📲 Repost | Ulashish | Saqlash", callback_data="ig_repost")],
+            [InlineKeyboardButton(text="🔙 Orqaga", callback_data="main_menu")]
+        ]
+    )
+
+    await call.message.answer(
+        "📸 <b>Instagram bo‘limlaridan birini tanlang!</b>",
+        reply_markup=keyboard,
+        parse_mode="HTML"
+    )
+
+    await call.answer()
+    
     
 @router.message(lambda message: message.text == "🛒 Buyurtmalar")
 async def my_orders(message: Message):
