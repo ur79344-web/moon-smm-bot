@@ -218,6 +218,47 @@ async def telegram_premium(call: CallbackQuery):
     )
 
     await call.answer()
+
+
+@router.callback_query(lambda c: c.data == "tg_views")
+async def telegram_views(call: CallbackQuery):
+
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text="👁️ Ko'rish (Bitta post uchun)",
+                    callback_data="tg_views_single"
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    text="👁️ Ko'rish (Eski - oxirgi post uchun)",
+                    callback_data="tg_views_old"
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    text="👁️ Ko'rish (Kelgusi post uchun)",
+                    callback_data="tg_views_future"
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    text="🔙 Orqaga",
+                    callback_data="telegram"
+                )
+            ]
+        ]
+    )
+
+    await call.message.edit_text(
+        "📦 <b>Ichki bo'limlaridan birini tanlang.</b>",
+        reply_markup=keyboard,
+        parse_mode="HTML"
+    )
+
+    await call.answer()
     
 
 @router.callback_query(lambda c: c.data == "instagram")
