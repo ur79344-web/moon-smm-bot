@@ -153,7 +153,16 @@ async def network_services(call: CallbackQuery):
             [InlineKeyboardButton(text="🔙 Orqaga", callback_data="main_menu")]
         ]
     )
-    
+
+    await call.message.edit_text(
+        "📦 <b>Telegram bo‘limlaridan birini tanlang!</b>",
+        reply_markup=keyboard,
+        parse_mode="HTML"
+    )
+
+    await call.answer()
+
+
 @router.callback_query(lambda c: c.data == "tg_sub")
 async def telegram_subscribers(call: CallbackQuery):
 
@@ -171,15 +180,6 @@ async def telegram_subscribers(call: CallbackQuery):
 
     await call.message.edit_text(
         "📦 <b>Ichki bo'limlaridan birini tanlang.</b>",
-        reply_markup=keyboard,
-        parse_mode="HTML"
-    )
-
-    await call.answer()
-    
-
-    await call.message.edit_text(
-        "📦 <b>Telegram bo‘limlaridan birini tanlang!</b>",
         reply_markup=keyboard,
         parse_mode="HTML"
     )
