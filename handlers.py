@@ -109,6 +109,18 @@ async def check_sub(call: CallbackQuery):
         )
         
         
+@router.callback_query(lambda c: c.data == "main_menu")
+async def back_main_menu(call: CallbackQuery):
+
+    await call.message.answer(
+        "🖥️ <b>Asosiy menyudasiz.</b>",
+        reply_markup=main_menu,
+        parse_mode="HTML"
+    )
+
+    await call.answer()
+        
+        
 @router.message(lambda message: message.text == "💡 Xizmatlar")
 async def services_menu_handler(message: Message):
 
