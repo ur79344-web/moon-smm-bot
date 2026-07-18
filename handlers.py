@@ -215,53 +215,68 @@ async def discount_handler(call: CallbackQuery):
 async def referral_handler(message: Message):
 
     from database import get_referrals
-
+    from keyboards import referal_keyboard
 
     referrals = await get_referrals(
         message.from_user.id
     )
 
-
     bot_username = (await message.bot.get_me()).username
-
 
     referral_link = (
         f"https://t.me/{bot_username}?start={message.from_user.id}"
     )
 
-
     await message.answer(
         "🗣️ <b>Sizning referal havolangiz:</b>\n\n"
         f"{referral_link}\n\n"
         f"👥 <b>Sizning referallaringiz:</b> {referrals} ta\n\n"
-        "💰 Har bir taklif qilgan o'zbek referalingiz uchun "
-        "100 so'm beriladi.\n"
+        "💰 Har bir taklif qilgan o'zbek referalingiz uchun 100 so'm beriladi.\n"
         "🌍 Boshqa davlat referali uchun 50 so'm beriladi.\n\n"
         "⚠️ Feyk yoki yolg'on reklama block bo'lishga sabab bo'ladi.\n\n"
         f"👤 <b>ID raqam:</b> {message.from_user.id}",
+        reply_markup=referal_keyboard,
         parse_mode="HTML"
     )
-    
-    
-id="pay1"
-@router.message(lambda message: message.text == "💳 To'lov")
-async def payment_handler(message: Message):
-
-    from keyboards import payment_keyboard
 
 
-    await message.answer(
-        "👇 <b>Pastdagi berilgan tugmalardan birini tanlang "
-        "va to'lov summasini kiriting hamda sizga berilgan "
-        "havola orqali to'lovni amalga oshiring va tasdiqlang!</b>\n\n"
-        "⚠️ <b>Diqqat!</b> Barcha to'lov tizimlari xavfsiz. "
-        "To'lov qilganingizdan so'ng kartangizdan ortiqcha pul "
-        "yechilmaydi va kartangizga ulanilmaydi.\n\n"
-        "ID raqam: "
-        f"{message.from_user.id}",
-        reply_markup=payment_keyboard,
+@router.callback_query(lambda c: c.data == "top_referrals")
+async def top_referrals(call: CallbackQuery):
+
+    from database import get_top_referrals
+    from keyboards import top_referrals_keyboard
+    from datetime import datetime
+
+    users = await get_top_referrals()
+
+    text = (
+        "⚡️ <b>Mavjud natijalar:</b>\n\n"
+        "🔍 <b>So'rov:</b> 📎 Referal bo'yicha\n\n"
+        "🏆 <b>Top reyting: 10 ta</b>\n\n"
+    )
+
+    if users:
+        for i, (username, user_id, referrals) in enumerate(users, start=1):
+            if username:
+                name = f"@{username}"
+            else:
+                name = str(user_id)
+
+            text += f"{i}) {name} — {referrals}\n"
+    else:
+        text += "Hozircha reyting mavjud emas.\n"
+
+    text += (
+        f"\n⏰ {datetime.now().strftime('%d-%m-%Y %H:%M:%S')}"
+    )
+
+    await call.message.edit_text(
+        text,
+        reply_markup=top_referrals_keyboard,
         parse_mode="HTML"
     )
+
+    await call.answer()
 
 
 
