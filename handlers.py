@@ -430,9 +430,12 @@ async def guide_handler(message: Message):
 @router.message(lambda message: message.text == "☎️ Qo'llab Quvvatlash")
 async def support_handler(message: Message):
 
+    from keyboards import support_keyboard
+
     await message.answer(
-        "☎️ <b>Qo'llab Quvvatlash:</b>\n\n"
-        "Admin: @khosimov_abu",
+        "☎️ <b>Qo'llab Quvvatlash</b>\n\n"
+        "Savolingiz yoki muammoingiz bo'lsa, quyidagi tugma orqali admin bilan bog'laning.",
+        reply_markup=support_keyboard,
         parse_mode="HTML"
     )
 
