@@ -1,5 +1,6 @@
 from aiogram import Router
 from aiogram.filters import CommandStart
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, CallbackQuery
 from datetime import datetime
@@ -121,22 +122,29 @@ async def services_menu_handler(message: Message):
     
     
 @router.callback_query(
-    lambda c: c.data in [
-        "telegram",
-        "instagram"
-    ]
+    lambda c: c.data == "telegram"
 )
 async def network_services(call: CallbackQuery):
 
-    services = {
-        "telegram": "🔵 Telegram xizmatlari",
-        "instagram": "🟣 Instagram xizmatlari",
-    }
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="👥 Obunachi", callback_data="tg_sub")],
+            [InlineKeyboardButton(text="🌟 Premium 👥 Obunachi", callback_data="tg_premium")],
+            [InlineKeyboardButton(text="👁️ Ko'rish", callback_data="tg_views")],
+            [InlineKeyboardButton(text="📖 Story ko'rish", callback_data="tg_story")],
+            [InlineKeyboardButton(text="🎭 Reaksiya", callback_data="tg_reaction")],
+            [InlineKeyboardButton(text="↪️ Ulashish", callback_data="tg_share")],
+            [InlineKeyboardButton(text="💬 Comment", callback_data="tg_comment")],
+            [InlineKeyboardButton(text="⚡️ BOOST hikoyaga ovoz", callback_data="tg_boost")],
+            [InlineKeyboardButton(text="📊 Ovoz | So'rovnoma", callback_data="tg_poll")],
+            [InlineKeyboardButton(text="🤖 Bot 👥 Obunachi", callback_data="tg_bot_sub")],
+            [InlineKeyboardButton(text="🔙 Orqaga", callback_data="main_menu")]
+        ]
+    )
 
     await call.message.answer(
-        f"📦 <b>{services[call.data]}</b>\n\n"
-        "Kerakli xizmat turini tanlang.\n"
-        "Tez orada xizmatlar ro'yxati chiqadi.",
+        "📦 <b>Telegram bo‘limlaridan birini tanlang!</b>",
+        reply_markup=keyboard,
         parse_mode="HTML"
     )
 
