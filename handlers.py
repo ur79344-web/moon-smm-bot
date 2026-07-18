@@ -123,10 +123,7 @@ async def services_menu_handler(message: Message):
 @router.callback_query(
     lambda c: c.data in [
         "telegram",
-        "instagram",
-        "youtube",
-        "tiktok",
-        "stars"
+        "instagram"
     ]
 )
 async def network_services(call: CallbackQuery):
@@ -134,11 +131,7 @@ async def network_services(call: CallbackQuery):
     services = {
         "telegram": "🔵 Telegram xizmatlari",
         "instagram": "🟣 Instagram xizmatlari",
-        "youtube": "🔴 YouTube xizmatlari",
-        "tiktok": "⚫️ TikTok xizmatlari",
-        "stars": "⭐️ Stars or Premium xizmatlari"
     }
-
 
     await call.message.answer(
         f"📦 <b>{services[call.data]}</b>\n\n"
