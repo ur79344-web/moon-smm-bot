@@ -15,8 +15,8 @@ from config import CHANNEL_1, CHANNEL_2
 main_menu = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text="💡 Xizmatlar"),
             KeyboardButton(text="🛒 Buyurtmalar"),
+            KeyboardButton(text="💡 Xizmatlar"),
         ],
         [
             KeyboardButton(text="💰 Balans"),
