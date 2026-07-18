@@ -154,7 +154,7 @@ async def network_services(call: CallbackQuery):
         ]
     )
 
-    await call.message.answer(
+    await call.message.edit_text(
         "📦 <b>Telegram bo‘limlaridan birini tanlang!</b>",
         reply_markup=keyboard,
         parse_mode="HTML"
@@ -178,7 +178,7 @@ async def instagram_services(call: CallbackQuery):
         ]
     )
 
-    await call.message.answer(
+    await call.message.edit_text(
         "📸 <b>Instagram bo‘limlaridan birini tanlang!</b>",
         reply_markup=keyboard,
         parse_mode="HTML"
