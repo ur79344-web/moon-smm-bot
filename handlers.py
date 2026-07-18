@@ -301,6 +301,19 @@ async def payment_handler(message: Message):
     )
 
 
+@router.callback_query(
+    lambda c: c.data in ["tiktok", "youtube", "stars"]
+)
+async def unavailable_services(call: CallbackQuery):
+
+    await call.answer()
+
+    await call.message.answer(
+        "⚠️ <b>Ushbu tarmoq uchun xizmat turlari topilmadi.</b>",
+        parse_mode="HTML"
+    )
+
+
 @router.callback_query(lambda c: c.data == "humocard")
 async def humocard_handler(call: CallbackQuery):
 
