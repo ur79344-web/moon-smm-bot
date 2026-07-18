@@ -205,3 +205,17 @@ payment_admin_keyboard = InlineKeyboardMarkup(
         ]
     ]
 )
+
+
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+
+support_keyboard = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(
+                text="💬 Admin bilan bog'lanish",
+                url="https://t.me/khosimov_abu"
+            )
+        ]
+    ]
+)
