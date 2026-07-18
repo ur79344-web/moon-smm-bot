@@ -1,18 +1,23 @@
 from aiogram import Router
 from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
-from states import PaymentState
 from aiogram.types import Message, CallbackQuery
+from datetime import datetime
+
+from states import PaymentState
 
 from keyboards import (
     main_menu,
     subscribe_keyboard,
-    payment_admin_keyboard
+    payment_admin_keyboard,
+    referal_keyboard,
+    top_referrals_keyboard,
 )
 
 from database import (
     create_db,
     add_user,
+    get_top_referrals,
 )
 
 from config import CHANNEL_1, CHANNEL_2, ADMIN_ID
