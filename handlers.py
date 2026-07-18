@@ -153,6 +153,30 @@ async def network_services(call: CallbackQuery):
             [InlineKeyboardButton(text="🔙 Orqaga", callback_data="main_menu")]
         ]
     )
+    
+@router.callback_query(lambda c: c.data == "tg_sub")
+async def telegram_subscribers(call: CallbackQuery):
+
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="❌ Obunachi • Kafolatsiz", callback_data="tg_sub_noguarantee")],
+            [InlineKeyboardButton(text="♻️ Obunachi • Kafolatli", callback_data="tg_sub_guarantee")],
+            [InlineKeyboardButton(text="🌱 Obunachi • Tabiiy & Aktiv", callback_data="tg_sub_natural")],
+            [InlineKeyboardButton(text="🟢 Obunachi • Onlayn", callback_data="tg_sub_online")],
+            [InlineKeyboardButton(text="🇺🇿 Obunachi • Uzbek", callback_data="tg_sub_uz")],
+            [InlineKeyboardButton(text="🇺🇿 Obunachi • Uzbek 2", callback_data="tg_sub_uz2")],
+            [InlineKeyboardButton(text="🔙 Orqaga", callback_data="telegram")]
+        ]
+    )
+
+    await call.message.edit_text(
+        "📦 <b>Ichki bo'limlaridan birini tanlang.</b>",
+        reply_markup=keyboard,
+        parse_mode="HTML"
+    )
+
+    await call.answer()
+    
 
     await call.message.edit_text(
         "📦 <b>Telegram bo‘limlaridan birini tanlang!</b>",
