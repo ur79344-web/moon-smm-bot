@@ -187,7 +187,7 @@ async def telegram_subscribers(call: CallbackQuery):
     await call.answer()
     
     
-    @router.callback_query(lambda c: c.data == "tg_premium")
+@router.callback_query(lambda c: c.data == "tg_premium")
 async def telegram_premium(call: CallbackQuery):
 
     keyboard = InlineKeyboardMarkup(
