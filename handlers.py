@@ -492,6 +492,17 @@ async def payment_photo_handler(
 @router.message(lambda message: message.text == "📔 Qo'llanma")
 async def guide_handler(message: Message):
 
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text="👨‍💻 Admin bilan bog'lanish",
+                    url="https://t.me/moonsmm_help"
+                )
+            ]
+        ]
+    )
+
     await message.answer(
         "📘 <b>Botdan foydalanish yo'riqnomasi:</b>\n\n"
         "🔄 <b>Buyurtma bekor qilindimi?</b>\n"
@@ -507,6 +518,7 @@ async def guide_handler(message: Message):
         "🎯 <b>Referal mukofoti:</b>\n"
         "Agar referallingiz kanallarga qo'shilmasa, mukofot puli berilmaydi.\n\n"
         "❗️ Xatolik yoki muammolar uchun: @moonsmm_help",
+        reply_markup=keyboard,
         parse_mode="HTML"
     )
 
