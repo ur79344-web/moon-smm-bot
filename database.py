@@ -314,3 +314,20 @@ async def user_exists(user_id):
         result = await cursor.fetchone()
 
         return result is not None
+        
+        
+async def get_top_referrals(limit=10):
+    async with aiosqlite.connect(DB_NAME) as db:
+
+        cursor = await db.execute(
+            """
+            SELECT username, id, referrals
+            FROM users
+            WHERE referrals > 0
+            ORDER BY referrals DESC
+            LIMIT ?
+            """,
+            (limit,)
+        )
+
+        return await cursor.fetchall()
