@@ -186,6 +186,39 @@ async def telegram_subscribers(call: CallbackQuery):
 
     await call.answer()
     
+    
+    @router.callback_query(lambda c: c.data == "tg_premium")
+async def telegram_premium(call: CallbackQuery):
+
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(
+                text="🌟 Premium 👥 Obunachi (Kafolatsiz)",
+                callback_data="tg_premium_noguarantee"
+            )],
+            [InlineKeyboardButton(
+                text="🌟 Premium 👥 Obunachi (♻️ Kafolatli)",
+                callback_data="tg_premium_guarantee"
+            )],
+            [InlineKeyboardButton(
+                text="🌟 Premium 👥 Obunachi (Arzon baza)",
+                callback_data="tg_premium_cheap"
+            )],
+            [InlineKeyboardButton(
+                text="🔙 Orqaga",
+                callback_data="telegram"
+            )]
+        ]
+    )
+
+    await call.message.edit_text(
+        "📦 <b>Ichki bo'limlaridan birini tanlang.</b>",
+        reply_markup=keyboard,
+        parse_mode="HTML"
+    )
+
+    await call.answer()
+    
 
 @router.callback_query(lambda c: c.data == "instagram")
 async def instagram_services(call: CallbackQuery):
