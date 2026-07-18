@@ -178,10 +178,27 @@ referal_keyboard = InlineKeyboardMarkup(
     inline_keyboard=[
         [
             InlineKeyboardButton(
-                text="📤 Referal havolani ulash",
+                text="✅ Ulashish (oddiy)",
                 switch_inline_query=""
-            ),
+            )
         ],
+        [
+            InlineKeyboardButton(
+                text="🏆 Top foydalanuvchilar",
+                callback_data="top_referrals"
+            )
+        ]
+    ]
+)
+
+top_referrals_keyboard = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(
+                text="🔙 Orqaga",
+                callback_data="back_menu"
+            )
+        ]
     ]
 )
 
