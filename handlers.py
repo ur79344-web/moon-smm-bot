@@ -271,9 +271,7 @@ async def top_referrals(call: CallbackQuery):
     else:
         text += "Hozircha reyting mavjud emas.\n"
 
-    text += (
-        f"\n⏰ {datetime.now().strftime('%d-%m-%Y %H:%M:%S')}"
-    )
+    text += f"\n⏰ {datetime.now().strftime('%d-%m-%Y %H:%M:%S')}"
 
     await call.message.edit_text(
         text,
@@ -284,12 +282,29 @@ async def top_referrals(call: CallbackQuery):
     await call.answer()
 
 
+@router.message(lambda message: message.text == "💳 To'lov")
+async def payment_handler(message: Message):
+
+    from keyboards import payment_keyboard
+
+    await message.answer(
+        "👇 <b>Pastdagi berilgan tugmalardan birini tanlang "
+        "va to'lov summasini kiriting hamda sizga berilgan "
+        "havola orqali to'lovni amalga oshiring va tasdiqlang!</b>\n\n"
+        "⚠️ <b>Diqqat!</b> Barcha to'lov tizimlari xavfsiz. "
+        "To'lov qilganingizdan so'ng kartangizdan ortiqcha pul "
+        "yechilmaydi va kartangizga ulanilmaydi.\n\n"
+        "ID raqam: "
+        f"{message.from_user.id}",
+        reply_markup=payment_keyboard,
+        parse_mode="HTML"
+    )
+
 
 @router.callback_query(lambda c: c.data == "humocard")
 async def humocard_handler(call: CallbackQuery):
 
     from keyboards import humocard_keyboard
-
 
     await call.message.answer(
         "🪙 <b>To'lov tizimi:</b> 🟡 HumoCard\n\n"
