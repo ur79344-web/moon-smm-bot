@@ -260,6 +260,10 @@ async def telegram_views(call: CallbackQuery):
 
     await call.answer()
     
+    
+@router.callback_query(lambda c: c.data == "tg_reaction")
+async def telegram_reaction(call: CallbackQuery):
+    
 
 @router.callback_query(lambda c: c.data == "instagram")
 async def instagram_services(call: CallbackQuery):
