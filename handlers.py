@@ -256,6 +256,15 @@ async def tg_sub_online(call: CallbackQuery):
     await call.answer()
     
     
+@router.callback_query(lambda c: c.data in ["tg_sub_uzbek", "tg_sub_uzbek2"])
+async def tg_sub_uzbek(call: CallbackQuery):
+
+    await call.answer(
+        "⚠️ Ushbu xizmat tez orada qo'shiladi!",
+        show_alert=True
+    )
+    
+    
 @router.callback_query(lambda c: c.data == "tg_sub_guarantee")
 async def tg_sub_guarantee(call: CallbackQuery):
 
