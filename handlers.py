@@ -165,8 +165,6 @@ async def telegram_subscribers(call: CallbackQuery):
             [InlineKeyboardButton(text="♻️ Obunachi • Kafolatli", callback_data="tg_sub_guarantee")],
             [InlineKeyboardButton(text="🌱 Obunachi • Tabiiy & Aktiv", callback_data="tg_sub_natural")],
             [InlineKeyboardButton(text="🟢 Obunachi • Onlayn", callback_data="tg_sub_online")],
-            [InlineKeyboardButton(text="🇺🇿 Obunachi • Uzbek", callback_data="tg_sub_uz")],
-            [InlineKeyboardButton(text="🇺🇿 Obunachi • Uzbek 2", callback_data="tg_sub_uz2")],
             [InlineKeyboardButton(text="🔙 Orqaga", callback_data="telegram")]
         ]
     )
