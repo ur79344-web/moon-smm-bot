@@ -210,6 +210,44 @@ async def tg_sub_noguarantee(call: CallbackQuery):
     await call.answer()
     
     
+@router.callback_query(lambda c: c.data == "tg_sub_guarantee")
+async def tg_sub_guarantee(call: CallbackQuery):
+
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(
+                text="👣 Obunachi SOXTA (⛔️ BEZ MINUS) HOT🔥 — 13 000 so'm",
+                callback_data="service_242"
+            )],
+            [InlineKeyboardButton(
+                text="👣 Obunachi (⛔️ BEZ MINUS) HOT🔥 — 13 000 so'm",
+                callback_data="service_243"
+            )],
+            [InlineKeyboardButton(
+                text="👣 Obunachi (⛔️ Bezminus | ♻️ R30) — 5 000 so'm",
+                callback_data="service_278"
+            )],
+            [InlineKeyboardButton(
+                text="👣 Obunachi (⛔️ Bezminus | ♻️ R30) ⚡️ — 4 900 so'm",
+                callback_data="service_279"
+            )],
+            [InlineKeyboardButton(
+                text="🔙 Orqaga",
+                callback_data="tg_sub"
+            )]
+        ]
+    )
+
+    await call.message.edit_text(
+        "📦 <b>Marhamat, kerakli ta'rifni tanlang!</b>\n\n"
+        "💰 <b>Narxlar 1000 tasi uchun berilgan.</b>",
+        reply_markup=keyboard,
+        parse_mode="HTML"
+    )
+
+    await call.answer()
+    
+    
 @router.callback_query(lambda c: c.data == "tg_premium")
 async def telegram_premium(call: CallbackQuery):
 
