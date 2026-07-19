@@ -907,3 +907,16 @@ async def approve_payment(call: CallbackQuery):
         "✅ Tasdiqlandi",
         show_alert=True
     )
+    
+    
+@router.callback_query(lambda c: c.data == "services")
+async def services_callback(call: CallbackQuery):
+    from keyboards import services_keyboard
+
+    await call.message.edit_text(
+        "📱 <b>Kerakli tarmoqni tanlang!</b>",
+        reply_markup=services_keyboard,
+        parse_mode="HTML"
+    )
+
+    await call.answer()
