@@ -142,13 +142,6 @@ async def network_services(call: CallbackQuery):
         inline_keyboard=[
             [InlineKeyboardButton(text="👥 Obunachi", callback_data="tg_sub")],
             [InlineKeyboardButton(text="🌟 Premium 👥 Obunachi", callback_data="tg_premium")],
-            [InlineKeyboardButton(text="👁️ Ko'rish", callback_data="tg_views")],
-            [InlineKeyboardButton(text="📖 Story ko'rish", callback_data="tg_story")],
-            [InlineKeyboardButton(text="🎭 Reaksiya", callback_data="tg_reaction")],
-            [InlineKeyboardButton(text="↪️ Ulashish", callback_data="tg_share")],
-            [InlineKeyboardButton(text="💬 Comment", callback_data="tg_comment")],
-            [InlineKeyboardButton(text="⚡️ BOOST hikoyaga ovoz", callback_data="tg_boost")],
-            [InlineKeyboardButton(text="📊 Ovoz | So'rovnoma", callback_data="tg_poll")],
             [InlineKeyboardButton(text="🤖 Bot 👥 Obunachi", callback_data="tg_bot_sub")],
             [InlineKeyboardButton(text="🔙 Orqaga", callback_data="main_menu")]
         ]
