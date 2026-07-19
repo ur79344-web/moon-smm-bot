@@ -219,7 +219,7 @@ async def tg_sub_natural(call: CallbackQuery):
         inline_keyboard=[
             [InlineKeyboardButton(text="👣 Obunachi + ko‘rish (♻️ R30) — 60 000 so'm", callback_data="service_239")],
             [InlineKeyboardButton(text="👣 Obunachi + ko‘rish (♻️ R60) — 95 000 so'm", callback_data="service_240")],
-            [InlineKeyboardButton(text="👣 Obunachi + ko‘rish (♻️ R90) — 14 000 so'm", callback_data="service_241")],
+            [InlineKeyboardButton(text="👣 Obunachi + ko‘rish (♻️ R90) — 140 000 so'm", callback_data="service_241")],
             [InlineKeyboardButton(text="🔙 Orqaga", callback_data="tg_sub")]
         ]
     )
