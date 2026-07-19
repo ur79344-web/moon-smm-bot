@@ -209,6 +209,30 @@ async def tg_sub_noguarantee(call: CallbackQuery):
 
     await call.answer()
     
+    await call.answer()
+
+
+@router.callback_query(lambda c: c.data == "tg_sub_natural")
+async def tg_sub_natural(call: CallbackQuery):
+
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="👣 Obunachi + ko‘rish (♻️ R30) — 60 000 so'm", callback_data="service_239")],
+            [InlineKeyboardButton(text="👣 Obunachi + ko‘rish (♻️ R60) — 95 000 so'm", callback_data="service_240")],
+            [InlineKeyboardButton(text="👣 Obunachi + ko‘rish (♻️ R90) — 14 000 so'm", callback_data="service_241")],
+            [InlineKeyboardButton(text="🔙 Orqaga", callback_data="tg_sub")]
+        ]
+    )
+
+    await call.message.edit_text(
+        "📦 <b>Marhamat, kerakli ta'rifni tanlang!</b>\n\n"
+        "💰 <b>Narxlar 1000 tasi uchun berilgan.</b>",
+        reply_markup=keyboard,
+        parse_mode="HTML"
+    )
+
+    await call.answer()
+    
     
 @router.callback_query(lambda c: c.data == "tg_sub_guarantee")
 async def tg_sub_guarantee(call: CallbackQuery):
