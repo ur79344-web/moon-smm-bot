@@ -263,6 +263,26 @@ async def telegram_views(call: CallbackQuery):
     
 @router.callback_query(lambda c: c.data == "tg_reaction")
 async def telegram_reaction(call: CallbackQuery):
+
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="🎭 Reaksiya (Aralash)", callback_data="tg_reaction_mix")],
+            [InlineKeyboardButton(text="🎭 Reaksiya - 1", callback_data="tg_reaction_1")],
+            [InlineKeyboardButton(text="🎭 Reaksiya - 2", callback_data="tg_reaction_2")],
+            [InlineKeyboardButton(text="🎭 Reaksiya - 3", callback_data="tg_reaction_3")],
+            [InlineKeyboardButton(text="🎭 Reaksiya - 4", callback_data="tg_reaction_4")],
+            [InlineKeyboardButton(text="🎭 Reaksiya - 5", callback_data="tg_reaction_5")],
+            [InlineKeyboardButton(text="🔙 Orqaga", callback_data="telegram")]
+        ]
+    )
+
+    await call.message.edit_text(
+        "📦 <b>Ichki bo'limlaridan birini tanlang.</b>",
+        reply_markup=keyboard,
+        parse_mode="HTML"
+    )
+
+    await call.answer()
     
 
 @router.callback_query(lambda c: c.data == "instagram")
