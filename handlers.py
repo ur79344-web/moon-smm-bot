@@ -377,6 +377,44 @@ async def telegram_views(call: CallbackQuery):
     await call.answer()
     
     
+@router.callback_query(lambda c: c.data == "tg_views_old")
+async def tg_views_old(call: CallbackQuery):
+
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(
+                text="👁️ Eski-oxirgi 5 ta post — 805 so'm",
+                callback_data="service_303"
+            )],
+            [InlineKeyboardButton(
+                text="👁️ Eski-oxirgi 10 ta post — 1 500 so'm",
+                callback_data="service_304"
+            )],
+            [InlineKeyboardButton(
+                text="👁️ Eski-oxirgi 20 ta post — 3 000 so'm",
+                callback_data="service_305"
+            )],
+            [InlineKeyboardButton(
+                text="👁️ Eski-oxirgi 50 ta post — 5 560 so'm",
+                callback_data="service_306"
+            )],
+            [InlineKeyboardButton(
+                text="🔙 Orqaga",
+                callback_data="tg_views"
+            )]
+        ]
+    )
+
+    await call.message.edit_text(
+        "📦 <b>Marhamat, kerakli ta'rifni tanlang!</b>\n\n"
+        "💰 <b>Narxlar 1000 tasi uchun berilgan.</b>",
+        reply_markup=keyboard,
+        parse_mode="HTML"
+    )
+
+    await call.answer()
+    
+    
 @router.callback_query(lambda c: c.data == "tg_reaction")
 async def telegram_reaction(call: CallbackQuery):
 
