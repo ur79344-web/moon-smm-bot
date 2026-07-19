@@ -143,7 +143,7 @@ async def network_services(call: CallbackQuery):
             [InlineKeyboardButton(text="👥 Obunachi", callback_data="tg_sub")],
             [InlineKeyboardButton(text="🌟 Premium 👥 Obunachi", callback_data="tg_premium")],
             [InlineKeyboardButton(text="🤖 Bot 👥 Obunachi", callback_data="tg_bot_sub")],
-            [InlineKeyboardButton(text="🔙 Orqaga", callback_data="main_menu")]
+            [InlineKeyboardButton(text="🔙 Orqaga", callback_data="services")]
         ]
     )
 
@@ -476,7 +476,7 @@ async def network_services(call: CallbackQuery):
             [InlineKeyboardButton(text="▶️ Video ko'rish", callback_data="ig_views")],
             [InlineKeyboardButton(text="❤️ Like | Yoqtirish", callback_data="ig_like")],
             [InlineKeyboardButton(text="💬 Comment", callback_data="ig_comment")],
-            [InlineKeyboardButton(text="🔙 Orqaga", callback_data="main_menu")]
+            [InlineKeyboardButton(text="🔙 Orqaga", callback_data="services")]
         ]
     )
 
