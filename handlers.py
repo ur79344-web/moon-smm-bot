@@ -284,6 +284,41 @@ async def telegram_reaction(call: CallbackQuery):
 
     await call.answer()
     
+    
+@router.callback_query(lambda c: c.data == "tg_bot_sub")
+async def telegram_bot_sub(call: CallbackQuery):
+
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text="🤖 Oddiy start",
+                    callback_data="tg_bot_start"
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    text="🤖 Bot start (Referal ID)",
+                    callback_data="tg_bot_ref"
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    text="🔙 Orqaga",
+                    callback_data="telegram"
+                )
+            ]
+        ]
+    )
+
+    await call.message.edit_text(
+        "📦 <b>Ichki bo'limlaridan birini tanlang.</b>",
+        reply_markup=keyboard,
+        parse_mode="HTML"
+    )
+
+    await call.answer()
+    
 
 @router.callback_query(lambda c: c.data == "instagram")
 async def instagram_services(call: CallbackQuery):
