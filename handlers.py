@@ -234,6 +234,28 @@ async def tg_sub_natural(call: CallbackQuery):
     await call.answer()
     
     
+@router.callback_query(lambda c: c.data == "tg_sub_online")
+async def tg_sub_online(call: CallbackQuery):
+
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="👥 Obunachi 🇷🇺 RUS (🟢Online | ♻️R30) — 30 000 so'm", callback_data="service_246")],
+            [InlineKeyboardButton(text="👥 Obunachi (🟢Online | ♻️R30) — 40 000 so'm", callback_data="service_245")],
+            [InlineKeyboardButton(text="👥 Obunachi 🇨🇳 Xitoy (🟢Online | ♻️R30) — 40 000 so'm", callback_data="service_247")],
+            [InlineKeyboardButton(text="🔙 Orqaga", callback_data="tg_sub")]
+        ]
+    )
+
+    await call.message.edit_text(
+        "📦 <b>Marhamat, kerakli ta'rifni tanlang!</b>\n\n"
+        "💰 <b>Narxlar 1000 tasi uchun berilgan.</b>",
+        reply_markup=keyboard,
+        parse_mode="HTML"
+    )
+
+    await call.answer()
+    
+    
 @router.callback_query(lambda c: c.data == "tg_sub_guarantee")
 async def tg_sub_guarantee(call: CallbackQuery):
 
